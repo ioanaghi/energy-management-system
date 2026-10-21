@@ -1,5 +1,11 @@
-package main.java.com.ds.energy.device_service.repository;
+package com.ds.energy.device_service.repository;
 
-public class DeviceRepository {
-    
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.ds.energy.device_service.entity.Device;
+
+public interface DeviceRepository extends JpaRepository<Device, Long> {
+    List<Device> findAllByUserId(Long userId);
 }
