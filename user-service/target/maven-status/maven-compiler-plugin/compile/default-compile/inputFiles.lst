@@ -1,0 +1,8 @@
+/Users/ioana/Desktop/Faculty Year 4/DS/Energy Management System/user-service/src/main/java/com/ds/energy/user_service/UserServiceApplication.java
+/Users/ioana/Desktop/Faculty Year 4/DS/Energy Management System/user-service/src/main/java/com/ds/energy/user_service/controller/UserController.java
+/Users/ioana/Desktop/Faculty Year 4/DS/Energy Management System/user-service/src/main/java/com/ds/energy/user_service/dto/UserCreateDTO.java
+/Users/ioana/Desktop/Faculty Year 4/DS/Energy Management System/user-service/src/main/java/com/ds/energy/user_service/dto/UserDTO.java
+/Users/ioana/Desktop/Faculty Year 4/DS/Energy Management System/user-service/src/main/java/com/ds/energy/user_service/entity/Role.java
+/Users/ioana/Desktop/Faculty Year 4/DS/Energy Management System/user-service/src/main/java/com/ds/energy/user_service/entity/User.java
+/Users/ioana/Desktop/Faculty Year 4/DS/Energy Management System/user-service/src/main/java/com/ds/energy/user_service/repository/UserRepository.java
+/Users/ioana/Desktop/Faculty Year 4/DS/Energy Management System/user-service/src/main/java/com/ds/energy/user_service/service/UserService.java
