@@ -25,7 +25,6 @@ docker compose up --build
 Compose pornește PostgreSQL și Device Service. PostgreSQL trebuie să fie healthy înainte de pornirea aplicației. Ca să poată rula simultan cu User Service, API-ul este publicat pe `http://localhost:8082` (portul intern al containerului este `8081`), iar baza de date pe `localhost:5434` (port intern `5432`).
 
 Swagger UI: [http://localhost:8082/swagger-ui.html](http://localhost:8082/swagger-ui.html)  
-OpenAPI JSON: [http://localhost:8082/api-docs](http://localhost:8082/api-docs)
 
 Oprește containerele cu `Ctrl+C`, apoi rulează:
 
@@ -66,7 +65,7 @@ Un nume gol sau un `maxConsumption` lipsă ori mai mic sau egal cu zero produce 
 
 În Postman folosește `Body` → `raw` → `JSON` pentru cererile `POST` și `PUT`.
 
-### Creare — `POST /api/devices`
+### Creare - `POST /api/devices`
 
 ```json
 {
@@ -91,11 +90,11 @@ Un nume gol sau un `maxConsumption` lipsă ori mai mic sau egal cu zero produce 
 
 ### Listare și căutare
 
-- `GET /api/devices` — toate dispozitivele.
-- `GET /api/devices/1` — dispozitivul cu ID-ul `1`.
-- `GET /api/devices/by-user/1` — dispozitivele asociate utilizatorului cu ID-ul `1`.
+- `GET /api/devices` - toate dispozitivele.
+- `GET /api/devices/1` - dispozitivul cu ID-ul `1`.
+- `GET /api/devices/by-user/1` - dispozitivele asociate utilizatorului cu ID-ul `1`.
 
-### Actualizare — `PUT /api/devices/1`
+### Actualizare - `PUT /api/devices/1`
 
 Trimite reprezentarea completă a dispozitivului. Pentru a elimina asocierea în acest endpoint, setează `userId` la `null`.
 
@@ -110,10 +109,10 @@ Trimite reprezentarea completă a dispozitivului. Pentru a elimina asocierea în
 
 ### Asociere / dez-asociere
 
-- `PUT /api/devices/1/assignment/1` — asociază dispozitivul `1` cu utilizatorul `1`.
-- `DELETE /api/devices/1/assignment` — elimină asocierea, fără să șteargă dispozitivul.
+- `PUT /api/devices/1/assignment/1` - asociază dispozitivul `1` cu utilizatorul `1`.
+- `DELETE /api/devices/1/assignment` - elimină asocierea, fără să șteargă dispozitivul.
 
-### Ștergere — `DELETE /api/devices/1`
+### Ștergere - `DELETE /api/devices/1`
 
 Răspunsul `204 No Content` confirmă ștergerea.
 
@@ -123,31 +122,31 @@ Capturile Postman pentru operațiile principale și asocierea dispozitivelor sun
 
 ### Creare dispozitiv
 
-![POST /api/devices — dispozitiv creat](src/main/resources/static/img/post_device.png)
+![POST /api/devices - dispozitiv creat](src/main/resources/static/img/post_device.png)
 
 ### Listarea dispozitivelor
 
-![GET /api/devices — lista dispozitivelor](src/main/resources/static/img/get_devices.png)
+![GET /api/devices - lista dispozitivelor](src/main/resources/static/img/get_devices.png)
 
 ### Căutare după ID
 
-![GET /api/devices/{id} — dispozitiv găsit după ID](src/main/resources/static/img/get_device_by_id.png)
+![GET /api/devices/{id} - dispozitiv găsit după ID](src/main/resources/static/img/get_device_by_id.png)
 
 ### Filtrare după ID-ul utilizatorului
 
-![GET /api/devices/by-user/{userId} — dispozitivele utilizatorului](src/main/resources/static/img/get_device_by_user_id.png)
+![GET /api/devices/by-user/{userId} - dispozitivele utilizatorului](src/main/resources/static/img/get_device_by_user_id.png)
 
 ### Actualizare dispozitiv
 
-![PUT /api/devices/{id} — dispozitiv actualizat](src/main/resources/static/img/put_device.png)
+![PUT /api/devices/{id} - dispozitiv actualizat](src/main/resources/static/img/put_device.png)
 
 ### Asociere dispozitiv cu utilizator
 
-![PUT /api/devices/{id}/assignment/{userId} — dispozitiv asociat](src/main/resources/static/img/assign_device.png)
+![PUT /api/devices/{id}/assignment/{userId} - dispozitiv asociat](src/main/resources/static/img/assign_device.png)
 
 ### Ștergere dispozitiv
 
-![DELETE /api/devices/{id} — dispozitiv șters](src/main/resources/static/img/delete_device.png)
+![DELETE /api/devices/{id} - dispozitiv șters](src/main/resources/static/img/delete_device.png)
 
 ## Build
 

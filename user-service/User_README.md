@@ -85,7 +85,7 @@ Un username deja folosit produce `409 Conflict`. Un ID inexistent produce `404 N
 
 În Postman, folosește `http://localhost:8081/api/users` ca URL de bază și setează `Body` → `raw` → `JSON` pentru cererile `POST` și `PUT`.
 
-### Creare — `POST /api/users`
+### Creare - `POST /api/users`
 
 ```json
 {
@@ -109,15 +109,15 @@ Răspunsul este `201 Created`, cu datele utilizatorului și ID-ul generat. Câmp
 }
 ```
 
-### Listare — `GET /api/users`
+### Listare - `GET /api/users`
 
 Returnează lista utilizatorilor. Răspunsul fiecărui utilizator nu conține parola.
 
-### Căutare după ID — `GET /api/users/1`
+### Căutare după ID - `GET /api/users/1`
 
 Înlocuiește `1` cu ID-ul întors la creare. Pentru un ID care nu există, API-ul răspunde cu `404 Not Found`.
 
-### Actualizare — `PUT /api/users/1`
+### Actualizare - `PUT /api/users/1`
 
 ```json
 {
@@ -130,7 +130,7 @@ Returnează lista utilizatorilor. Răspunsul fiecărui utilizator nu conține pa
 
 Parola existentă este păstrată când proprietatea `password` lipsește sau este goală. Pentru schimbarea parolei, trimite o valoare nouă în acel câmp.
 
-### Ștergere — `DELETE /api/users/1`
+### Ștergere - `DELETE /api/users/1`
 
 Răspunsul `204 No Content` confirmă ștergerea. Verifică apoi cu `GET /api/users/1`, care ar trebui să întoarcă `404 Not Found`.
 
@@ -142,23 +142,23 @@ Capturile de mai jos arată răspunsurile obținute la testarea endpoint-urilor 
 
 <img src="src/main/resources/img/post_user.png" alt="Postman: creare utilizator, răspuns 201 Created" width="900">
 
-### Listarea utilizatorilor — `GET /api/users`
+### Listarea utilizatorilor - `GET /api/users`
 
 <img src="src/main/resources/img/get_users.png" alt="Postman: listare utilizatori, răspuns 200 OK" width="900">
 
-### Căutarea unui utilizator după ID — `GET /api/users/3`
+### Căutarea unui utilizator după ID - `GET /api/users/3`
 
 <img src="src/main/resources/img/get_user_3.png" alt="Postman: utilizator găsit după ID, răspuns 200 OK" width="900">
 
-### Actualizarea unui utilizator — `PUT /api/users/3`
+### Actualizarea unui utilizator - `PUT /api/users/3`
 
 <img src="src/main/resources/img/put_user_3.png" alt="Postman: actualizare utilizator, răspuns 200 OK" width="900">
 
-### Ștergerea unui utilizator — `DELETE /api/users/2`
+### Ștergerea unui utilizator - `DELETE /api/users/2`
 
 <img src="src/main/resources/img/delete_user_2.png" alt="Postman: ștergere utilizator, răspuns 204 No Content" width="900">
 
-### Verificarea după ștergere — `GET /api/users/2`
+### Verificarea după ștergere - `GET /api/users/2`
 
 Captura confirmă că utilizatorul nu mai există după ștergere (`404 Not Found`).
 
