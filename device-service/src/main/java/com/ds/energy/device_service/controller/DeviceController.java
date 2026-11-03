@@ -1,4 +1,4 @@
-package main.java.com.ds.energy.device_service.controller;
+package com.ds.energy.device_service.controller;
 
 import java.util.List;
 

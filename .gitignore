@@ -1,0 +1,54 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Java / Maven build output
+**/target/
+**/build/
+**/out/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+coverage/
+.nyc_output/
+/package.json
+/package-lock.json
+
+# Python tools and virtual environments
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# IDE and operating system files
+.idea/
+.vscode/
+.settings/
+.sts4-cache/
+.apt_generated/
+.gradle/
+.classpath
+.factorypath
+.project
+.springBeans
+*.iml
+*.iws
+*.ipr
+.DS_Store
+Thumbs.db
+
+# Logs and local temporary output
+*.log
+tmp/
+output/
+
+# Keep the service-level READMEs, Compose files and screenshots already in the project.
+
+# Personal presentation notes (keep local only).
+/docs/presentation.md
+
+# Keep docs/database SQL dumps and docs/postman screenshots in Git.

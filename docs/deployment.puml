@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+skinparam componentStyle rectangle
+node "User computer" as client {
+  artifact "Web browser\nHTML / CSS / JavaScript" as browser
+}
+node "Docker host" as host {
+  node "reverse-proxy\nNginx :80\nHost :8085" as proxy {
+    artifact "frontend/" as frontend
+  }
+  node "gateway\nSpring Boot :8081" as gateway
+  node "auth-service\nSpring Boot :8081" as auth
+  node "user-service\nSpring Boot :8081" as users
+  node "device-service\nSpring Boot :8081" as devices
+  database "credential-db\nPostgreSQL :5432" as credentials
+  database "user-db\nPostgreSQL :5432" as userdb
+  database "device-db\nPostgreSQL :5432" as devicedb
+}
+browser --> proxy : HTTP / JSON
+proxy --> gateway : /api/*
+gateway --> auth : Login / register\nAccount writes
+gateway --> users : Profiles / roles
+gateway --> devices : Devices / assignments
+auth --> users : Profile CRUD
+auth --> credentials : SQL / Argon2 hashes
+users --> userdb : JDBC / JPA
+devices --> devicedb : JDBC / JPA
+@enduml

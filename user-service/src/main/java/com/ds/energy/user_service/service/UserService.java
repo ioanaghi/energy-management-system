@@ -33,25 +33,25 @@ public class UserService {
     }
 
     public UserDTO createUser(UserCreateDTO request) {
-        validateRequiredFields(request, true);
+        validateRequiredFields(request);
         if (userRepository.existsByUsername(request.getUsername().trim())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Username is already in use");
         }
 
         User user = new User();
-        applyRequest(user, request, true);
+        applyRequest(user, request);
         return toDTO(userRepository.save(user));
     }
 
     public UserDTO updateUser(Long id, UserCreateDTO request) {
-        validateRequiredFields(request, false);
+        validateRequiredFields(request);
         User user = findUser(id);
         String username = request.getUsername().trim();
         if (userRepository.existsByUsernameAndIdNot(username, id)) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Username is already in use");
         }
 
-        applyRequest(user, request, false);
+        applyRequest(user, request);
         return toDTO(userRepository.save(user));
     }
 
@@ -64,13 +64,12 @@ public class UserService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
     }
 
-    private void validateRequiredFields(UserCreateDTO request, boolean requirePassword) {
+    private void validateRequiredFields(UserCreateDTO request) {
         if (request == null
                 || isBlank(request.getUsername())
-                || request.getRole() == null
-                || (requirePassword && isBlank(request.getPassword()))) {
+                || request.getRole() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                    "Username and role are required; password is required when creating a user");
+                    "Username and role are required");
         }
     }
 
@@ -78,14 +77,11 @@ public class UserService {
         return value == null || value.isBlank();
     }
 
-    private void applyRequest(User user, UserCreateDTO request, boolean creating) {
+    private void applyRequest(User user, UserCreateDTO request) {
         user.setUsername(request.getUsername().trim());
         user.setRole(request.getRole());
         user.setName(request.getName());
         user.setAddress(request.getAddress());
-        if (creating || !isBlank(request.getPassword())) {
-            user.setPassword(request.getPassword());
-        }
     }
 
     private UserDTO toDTO(User user) {

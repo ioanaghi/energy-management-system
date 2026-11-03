@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Energy Management</title>
+  <link rel="stylesheet" href="/style.css?v=5">
+  <script src="/app.js?v=5" defer></script>
+</head>
+<body class="auth-page">
+  <header class="topbar">
+    <a href="/" class="brand">Energy Management System</a>
+    <div id="account"></div>
+  </header>
+
+  <main>
+    <div id="notice" role="status" aria-live="polite" hidden></div>
+
+    <section id="login-view" class="auth-view">
+      <div class="auth-intro"><h1>Energy Management System</h1><p>Sign in to continue.</p></div>
+      <form id="login-form" class="auth-card" method="post" action="/api/auth/login">
+        <h2>Sign in</h2>
+        <label>Username<input name="username" autocomplete="username" maxlength="100" required pattern="\S+"></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" minlength="8" maxlength="128" required></label>
+        <button type="submit">Sign in</button>
+        <p class="auth-link">New here? <a href="/register">Create an account</a></p>
+      </form>
+    </section>
+
+    <section id="register-view" class="auth-view" hidden>
+      <div class="auth-intro"><h1>Create an account</h1><p>Ask your administrator to assign devices after signing up.</p></div>
+      <form id="register-form" class="auth-card" method="post" action="/api/auth/register">
+        <h2>Create account</h2>
+        <label>Username<input name="username" autocomplete="username" maxlength="100" required pattern="\S+"></label>
+        <label>Password<input name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required></label>
+        <label>Full name <span class="optional">Optional</span><input name="name" autocomplete="name" maxlength="150"></label>
+        <label>Address <span class="optional">Optional</span><input name="address" autocomplete="street-address" maxlength="250"></label>
+        <button type="submit">Create account</button>
+        <p class="auth-link">Already have an account? <a href="/">Sign in</a></p>
+      </form>
+    </section>
+
+    <section id="dashboard" hidden>
+      <div class="dashboard-top">
+        <div><p class="role-label" id="role-label">ADMIN</p><h1 id="dashboard-title">Overview</h1></div>
+        <button class="button-quiet" id="refresh" type="button">Refresh</button>
+      </div>
+      <div id="stats" class="stats"></div>
+      <nav id="admin-tabs" class="tabs" hidden aria-label="Administration">
+        <button data-tab="devices" class="tab active" type="button">Devices</button>
+        <button data-tab="users" class="tab" type="button">Users</button>
+      </nav>
+      <section class="list-panel">
+        <div class="list-heading"><div><h2 id="list-title">Devices</h2><p id="list-caption"></p></div><button id="add-item" type="button">Add device</button></div>
+        <div id="list"></div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="editor">
+    <form id="edit-form" method="dialog">
+      <div class="dialog-heading"><h2 id="edit-title"></h2><button type="button" class="close-button" id="close-editor" aria-label="Close">×</button></div>
+      <p id="editor-error" role="alert" hidden></p>
+      <div id="edit-fields"></div>
+      <div class="dialog-actions"><button type="button" class="button-quiet" id="cancel-editor">Cancel</button><button type="submit" id="save-item">Save changes</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

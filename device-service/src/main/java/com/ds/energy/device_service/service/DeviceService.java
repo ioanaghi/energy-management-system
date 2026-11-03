@@ -81,13 +81,18 @@ public class DeviceService {
     }
 
     private void validateRequest(DeviceCreateDTO request) {
-        if (request == null || request.getName() == null || request.getName().isBlank()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Device name is required");
+        if (request == null || request.getName() == null || request.getName().isBlank() || request.getName().length() > 150) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Device name is required and must have at most 150 characters");
+        }
+        if (request.getAddress() != null && request.getAddress().length() > 250) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Address must have at most 250 characters");
         }
         BigDecimal maxConsumption = request.getMaxConsumption();
-        if (maxConsumption == null || maxConsumption.compareTo(BigDecimal.ZERO) <= 0) {
+        if (maxConsumption == null || maxConsumption.compareTo(BigDecimal.ZERO) <= 0
+                || maxConsumption.compareTo(new BigDecimal("999999999.999")) > 0
+                || maxConsumption.stripTrailingZeros().scale() > 3) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                    "Maximum consumption must be a positive number");
+                    "Maximum consumption must be positive, at most 999999999.999, with at most 3 decimal places");
         }
     }
 
